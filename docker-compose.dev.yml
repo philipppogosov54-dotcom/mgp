@@ -1,0 +1,45 @@
+version: '3.8'
+
+# Docker Compose для локальной разработки MGP AI Assistant
+# Запуск: docker-compose -f docker-compose.dev.yml up -d
+
+services:
+  # PostgreSQL база данных
+  postgres:
+    image: postgres:14-alpine
+    container_name: mgp_postgres_dev
+    environment:
+      POSTGRES_USER: mgp_user
+      POSTGRES_PASSWORD: mgp_dev_password
+      POSTGRES_DB: mgp_assistant
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mgp_user -d mgp_assistant"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # pgAdmin для удобного просмотра БД
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: mgp_pgadmin_dev
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@mgp.ru
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+volumes:
+  postgres_data:
+    name: mgp_postgres_data
+  pgadmin_data:
+    name: mgp_pgadmin_data

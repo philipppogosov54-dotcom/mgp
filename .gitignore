@@ -1,0 +1,108 @@
+# ==================================
+# MGP AI Assistant - .gitignore
+# ==================================
+
+# ===== Секреты и конфигурация =====
+.env
+.env.local
+.env.*.local
+*.env
+env.local
+env.production
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ===== Виртуальное окружение =====
+.venv/
+venv/
+ENV/
+env/
+.env/
+
+# ===== IDE и редакторы =====
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# ===== macOS =====
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# ===== Windows =====
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ===== Linux =====
+*~
+
+# ===== Логи и временные файлы =====
+*.log
+*.tmp
+*.temp
+logs/
+tmp/
+
+# ===== Данные приложения =====
+leads.txt
+*.db
+*.sqlite3
+
+# ===== Debug Bundle (логи не коммитим) =====
+debug_bundle/LOGS/*.jsonl
+debug_bundle/CASES/*.json
+debug_bundle/API_TRACES/*.json
+!debug_bundle/LOGS/.gitkeep
+!debug_bundle/CASES/.gitkeep
+!debug_bundle/API_TRACES/.gitkeep
+
+# ===== Jupyter Notebooks =====
+.ipynb_checkpoints/
+
+# ===== pytest =====
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ===== mypy =====
+.mypy_cache/
+
+# ===== Cursor IDE =====
+.cursor/
+# audit/debug artifacts
+_export_for_audit/
+export_for_audit.zip
+debug_bundle/
+debug_bundle.zip
+logs_only.zip
+app.jsonl
+TRANSFER_CHECKLIST.md
